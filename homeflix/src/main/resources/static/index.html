@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HomeFlix — Seu catálogo pessoal de vídeos. Organize e assista seus vídeos como uma Netflix caseira.">
+  <title>HomeFlix — Catálogo</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="preloader">
+    <svg id="preloader-svg" viewBox="0 0 500 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#7C3AED"/>
+          <stop offset="50%" stop-color="#8B5CF6"/>
+          <stop offset="100%" stop-color="#A78BFA"/>
+        </linearGradient>
+      </defs>
+      <text
+        x="250" y="58"
+        text-anchor="middle"
+        font-family="'Poppins', sans-serif"
+        font-size="60"
+        font-weight="700"
+        fill="none"
+        stroke="url(#logoGradient)"
+        stroke-width="1.5"
+        id="preloader-text"
+      >HomeFlix</text>
+    </svg>
+    <div class="preloader-tagline" id="preloader-tagline">Seu catálogo pessoal</div>
+  </div>
+  <nav class="navbar" id="navbar">
+    <div class="navbar-logo">HomeFlix</div>
+    <div class="navbar-links">
+      <a href="/" class="active">Início</a>
+      <a href="/videos.html">Vídeos</a>
+      <a href="/categories.html">Categorias</a>
+    </div>
+  </nav>
+  <section class="hero" id="hero">
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-content">
+      <h1>Seu Catálogo Pessoal</h1>
+      <p>Organize, categorize e assista seus vídeos em um só lugar</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number" id="stat-total">0</div>
+          <div class="hero-stat-label">Vídeos</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number" id="stat-watched">0</div>
+          <div class="hero-stat-label">Assistidos</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number" id="stat-favorites">0</div>
+          <div class="hero-stat-label">Favoritos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <main id="catalog">
+    <div class="loading" id="catalog-loading">
+      <div class="loading-spinner"></div>
+    </div>
+  </main>
+  <div class="modal-backdrop" id="videoModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-player" id="modalPlayer">
+        <div class="no-video">
+          <span>🎬</span>
+          <span>Nenhum vídeo disponível</span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="modalTitle">—</h2>
+        <div class="modal-meta" id="modalMeta"></div>
+        <p class="modal-description" id="modalDescription">—</p>
+        <div class="modal-categories" id="modalCategories"></div>
+        <div class="modal-actions" id="modalActions"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>

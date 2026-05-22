@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HomeFlix — Gerenciar vídeos do catálogo">
+  <title>HomeFlix — Vídeos</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <a href="/" class="navbar-logo">HomeFlix</a>
+    <div class="navbar-links">
+      <a href="/">Início</a>
+      <a href="/videos.html" class="active">Vídeos</a>
+      <a href="/categories.html">Categorias</a>
+    </div>
+  </nav>
+  <div class="page-header">
+    <h1 class="page-title">📹 Meus Vídeos</h1>
+    <button class="btn btn-primary" onclick="openForm()">+ Novo Vídeo</button>
+  </div>
+  <div class="section" style="padding-top: 0">
+    <div class="form-row">
+      <div class="form-group" style="flex:2">
+        <input type="text" class="form-control" id="searchInput" placeholder="Buscar por título..." oninput="handleSearch()">
+      </div>
+      <div class="form-group" style="flex:1">
+        <select class="form-control" id="filterCategory" onchange="handleFilter()">
+          <option value="">Todas as categorias</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="section" style="padding-top: 0">
+    <div id="videoList">
+      <div class="loading"><div class="loading-spinner"></div></div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="formModal">
+    <div class="modal" style="max-width: 650px;">
+      <button class="modal-close" onclick="closeForm()">✕</button>
+      <div class="modal-body" style="padding-top: 2rem;">
+        <h2 class="modal-title" id="formTitle">Novo Vídeo</h2>
+        <form id="videoForm" onsubmit="handleSubmit(event)" style="margin-top: 1.5rem;">
+          <input type="hidden" id="videoId">
+
+          <div class="form-group">
+            <label class="form-label">Título *</label>
+            <input type="text" class="form-control" id="inputTitle" required placeholder="Ex: Interestelar">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Descrição</label>
+            <textarea class="form-control" id="inputDescription" placeholder="Descrição do vídeo..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Link do Vídeo (Google Drive ou URL direta)</label>
+            <input type="text" class="form-control" id="inputFilePath" placeholder="https://drive.google.com/file/d/.../view">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">URL da Capa (imagem)</label>
+            <input type="text" class="form-control" id="inputCoverUrl" placeholder="https://exemplo.com/poster.jpg">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Ano</label>
+              <input type="number" class="form-control" id="inputYear" placeholder="2024">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nota (0-10)</label>
+              <input type="number" class="form-control" id="inputRating" step="0.1" min="0" max="10" placeholder="8.5">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Duração (min)</label>
+              <input type="number" class="form-control" id="inputDuration" placeholder="120">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Categorias</label>
+            <div id="categoryCheckboxes" style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.3rem;"></div>
+          </div>
+
+          <div class="form-row" style="margin-top: 0.5rem;">
+            <div class="form-check">
+              <input type="checkbox" id="inputWatched">
+              <label class="form-label" for="inputWatched" style="margin:0">Assistido</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="inputFavorite">
+              <label class="form-label" for="inputFavorite" style="margin:0">Favorito</label>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.8rem; margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-secondary" onclick="closeForm()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/videos.js"></script>
+</body>
+</html>

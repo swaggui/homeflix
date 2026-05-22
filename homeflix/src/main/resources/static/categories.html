@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HomeFlix — Gerenciar categorias do catálogo">
+  <title>HomeFlix — Categorias</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <a href="/" class="navbar-logo">HomeFlix</a>
+    <div class="navbar-links">
+      <a href="/">Início</a>
+      <a href="/videos.html">Vídeos</a>
+      <a href="/categories.html" class="active">Categorias</a>
+    </div>
+  </nav>
+  <div class="page-header">
+    <h1 class="page-title">📂 Categorias</h1>
+    <button class="btn btn-primary" onclick="openForm()">+ Nova Categoria</button>
+  </div>
+  <div class="section" style="padding-top: 0">
+    <div id="categoryList">
+      <div class="loading"><div class="loading-spinner"></div></div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="formModal">
+    <div class="modal" style="max-width: 500px;">
+      <button class="modal-close" onclick="closeForm()">✕</button>
+      <div class="modal-body" style="padding-top: 2rem;">
+        <h2 class="modal-title" id="formTitle">Nova Categoria</h2>
+        <form id="categoryForm" onsubmit="handleSubmit(event)" style="margin-top: 1.5rem;">
+          <input type="hidden" id="categoryId">
+
+          <div class="form-group">
+            <label class="form-label">Nome *</label>
+            <input type="text" class="form-control" id="inputName" required placeholder="Ex: Ficção Científica">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="inputDescription" placeholder="Descrição da categoria...">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Cor</label>
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <input type="color" id="inputColor" value="#8B5CF6" style="width:50px; height:38px; border:none; background:none; cursor:pointer;">
+              <input type="text" class="form-control" id="inputColorText" value="#8B5CF6" style="flex:1;" oninput="document.getElementById('inputColor').value = this.value" placeholder="#8B5CF6">
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.8rem; margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-secondary" onclick="closeForm()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/categories.js"></script>
+</body>
+</html>
